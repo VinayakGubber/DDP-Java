@@ -1,8 +1,7 @@
 import java.util.Scanner;
 
-public static Scanner sc = new Scanner(System.in);
-
 class HelperFunctions {
+    public static Scanner sc = new Scanner(System.in);
 
     // Power of a Number
     public int power(int base, int power) {
@@ -14,20 +13,18 @@ class HelperFunctions {
     }
 
     // Count of numbers
-    public int count() {
-        System.out.println("Enter the number : ");
-        int n = sc.nextInt();
+    public int count(int n) {
         int count = 0;
         while (n > 0) {
             n = n / 10;
             count++;
         }
-        System.out.println(count);
         return count;
     }
 }
 
 class Concepts extends HelperFunctions {
+    public static Scanner sc = new Scanner(System.in);
 
     // Reversing a number
     public void revNum() {
@@ -65,32 +62,48 @@ class Concepts extends HelperFunctions {
 
         System.out.println("Enter the number : ");
         int n = sc.nextInt();
-        int powerNum = 0;
+        int orgNum = n;
         int sum = 0;
+        int count = count(orgNum);
         while (n > 0) {
             int ld = n % 10;
-            for (int i = 0; i <= count(); i++) {
-
-            }
+            sum += power(ld, count);
             n = n / 10;
 
         }
-        if (orgNum == sum) {
-            System.out.println("Yes it is Amstrong number");
-        } else {
-            System.out.println("Its not a Amstrong number");
-        }
+        String result = sum == orgNum ? " Is a Amstrong Number " : " Is not a Amstrong Number ";
+        System.out.println(result);
     }
 
+    public void divisors() {
+
+        System.out.println("Enter the number : ");
+        int n = sc.nextInt();
+        System.out.println();
+
+        System.out.println("The divisors are :-");
+        for (int i = 1; i * i <= n; i++) {
+            if (n % i == 0) {
+                System.out.println(i + " ");
+                if (n / i != i) {
+                    System.out.println(n / i + " ");
+                }
+            }
+        }
+    }
 }
 
 public class basicMaths {
     public static void main(String args[]) {
         Concepts operation = new Concepts();
+        HelperFunctions helper = new HelperFunctions();
         // operation.revNum();
         // operation.palindrome();
-        operation.amstrong();
+        // operation.amstrong();
         // operation.count();
+        // helper.count(25);
+        // helper.power(2, 3);
+        operation.divisors();
 
     }
 }
