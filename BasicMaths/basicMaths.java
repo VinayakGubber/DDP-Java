@@ -141,10 +141,45 @@ class Concepts extends HelperFunctions {
         }
     }
 
+    // <------------------------Recursion------------------------>//
+
+    public void pName(int i, int n) {
+        // Print name n times
+        if (i > n)
+            return;
+        System.out.println("Vinayak");
+
+        pName(i + 1, n);
+    }
+    // The code below doesnt work as the above although it might look like it works
+    // Because when the function is called recursively the i is reinitialised to 1
+    // and this basically runs till the function stack is full and then terminates
+    // public void pName(int n) {
+    // int i = 1;
+    // if (i > n)
+    // return;
+    // System.out.println("Vinayak");
+    // i++;
+    // pName(n);
+    // }
+
+    public void pNumber(int from, int to) {
+        // Print number From i - To n || From n - To i BiDirectional
+
+        System.out.println(from);
+
+        if (from < to) {
+            pNumber(from + 1, to);
+        } else if (to < from) {
+            pNumber(from - 1, to);
+        }
+    }
+
 }
 
 public class basicMaths {
     public static void main(String args[]) {
+
         Concepts operation = new Concepts();
         HelperFunctions helper = new HelperFunctions();
         // operation.revNum();
@@ -155,7 +190,9 @@ public class basicMaths {
         // helper.power(2, 3);
         // operation.divisors();
         // operation.prime();
-        operation.gcd();
-
+        // operation.gcd();
+        // operation.pName(1, 5);
+        // operation.pName(1, 5);
+        operation.pNumber(8, 2);
     }
 }
