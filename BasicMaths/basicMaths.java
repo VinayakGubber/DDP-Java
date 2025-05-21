@@ -26,6 +26,8 @@ class HelperFunctions {
 class Concepts extends HelperFunctions {
     public static Scanner sc = new Scanner(System.in);
 
+    /* <------------------------Basic Maths------------------------> */
+
     // Reversing a number
     public void revNum() {
         System.out.println("Enter the number : ");
@@ -55,10 +57,11 @@ class Concepts extends HelperFunctions {
         }
     }
 
-    // Amstrong (Adding the power(power is equal to the count of digits) of the
-    // digits of the number should be equal to the
-    // number itself)
+    // Amstrong
     public void amstrong() {
+        // Amstrong (Adding the power(power is equal to the count of digits) of the
+        // digits of the number should be equal to the
+        // number itself)
 
         System.out.println("Enter the number : ");
         int n = sc.nextInt();
@@ -75,6 +78,7 @@ class Concepts extends HelperFunctions {
         System.out.println(result);
     }
 
+    // Divisors of n
     public void divisors() {
         // In this we have made use of the collection framework in java to store sort
         // and then print the divisors
@@ -98,6 +102,7 @@ class Concepts extends HelperFunctions {
         System.out.println(al);
     }
 
+    // Check prime or not
     public void prime() {
         // Prime or not OPTIMIZED O(sqrt(n))
         System.out.println("Enter the number : ");
@@ -119,6 +124,7 @@ class Concepts extends HelperFunctions {
         }
     }
 
+    // GCD of a given number
     public void gcd() {
         System.out.println("Enter the number a : ");
         int a = sc.nextInt();
@@ -141,30 +147,34 @@ class Concepts extends HelperFunctions {
         }
     }
 
-    // <------------------------Recursion------------------------>//
+    /* <------------------------Recursion------------------------> */
 
+    // Print name n times
     public void pName(int i, int n) {
-        // Print name n times
         if (i > n)
             return;
         System.out.println("Vinayak");
 
         pName(i + 1, n);
+        /*
+         * The code below doesnt work as the above although it might look like it works
+         * Because when the function is called recursively the i is reinitialised to 1
+         * and this basically runs till the function stack is full and then terminates
+         * 
+         * ----public void pName(int n) {
+         * int i = 1;
+         * if (i > n)
+         * return;
+         * System.out.println("Vinayak");
+         * i++;
+         * pName(n);
+         * }----
+         * 
+         */
     }
-    // The code below doesnt work as the above although it might look like it works
-    // Because when the function is called recursively the i is reinitialised to 1
-    // and this basically runs till the function stack is full and then terminates
-    // public void pName(int n) {
-    // int i = 1;
-    // if (i > n)
-    // return;
-    // System.out.println("Vinayak");
-    // i++;
-    // pName(n);
-    // }
 
+    // Print number From i - To n || From n - To i BiDirectional
     public void pNumber(int from, int to) {
-        // Print number From i - To n || From n - To i BiDirectional
 
         System.out.println(from);
 
@@ -175,13 +185,47 @@ class Concepts extends HelperFunctions {
         }
     }
 
+    // Print sum of n numbers
+    public void pSumOfNum(int i, int n, int sum) {
+        /*
+         * Note while using recursion any updates in the values over the iterations
+         * should be done inside the function call parameter ex:
+         * pSumOfNum(i+1,5,sum+i) other wise if we try to update inside the function
+         * block it will re initialize the parameters passes while calling the function
+         * and lead to infinite recursion
+         * Self-note - Beleive it or not it took me 30 minutes to figure out how to
+         * print the sum
+         * Challenge: I was initializing `sum = 0` inside the
+         * function each time,
+         * which made me think the recursive function wasn't accumulating correctly.
+         * Fix: Pass `sum` as a parameter and accumulate it through the recursive calls.
+         * Also, be careful with where you place `System.out.println()` – printing
+         * inside the stack
+         * instead of after recursion can lead to multiple partial prints.
+         */
+        if (i > n) {
+            /*
+             * This plays a crucial role in terminating the function once the condidtion is
+             * satisfied and also in printing the cumulative sum before the program
+             * execution is terminated.
+             */
+            System.out.println(sum);
+            return;
+        }
+        pSumOfNum(i + 1, n, sum + i);
+    }
+
+    /*---endl---*/
+
+    /*---endl---*/
 }
 
 public class basicMaths {
     public static void main(String args[]) {
 
         Concepts operation = new Concepts();
-        HelperFunctions helper = new HelperFunctions();
+        // HelperFunctions helper = new HelperFunctions();
+
         // operation.revNum();
         // operation.palindrome();
         // operation.amstrong();
@@ -193,6 +237,8 @@ public class basicMaths {
         // operation.gcd();
         // operation.pName(1, 5);
         // operation.pName(1, 5);
-        operation.pNumber(8, 2);
+        // operation.pNumber(8, 2);
+        // operation.pSumOfNum(1, 5, 0);
+        operation.pSumOfNum(1, 5, 0);
     }
 }
