@@ -7,6 +7,7 @@ import HelperFunctions.HelperFunction;
 import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.Scanner;
+import java.lang.Math;
 
 class Sort {
     Scanner sc = new Scanner(System.in);
@@ -19,13 +20,21 @@ class Sort {
         int[] arr = HelperFunction.arrayInput(n);
 
         for (int i = 0; i < n - 1; i++) {
+            boolean swapped = false;
             for (int j = i + 1; j <= n - 1; j++) {
                 if (arr[i] > arr[j]) {
                     int minValue = arr[i];
                     arr[i] = arr[j];
                     arr[j] = minValue;
+                    swapped = true;
                 }
             }
+            if (!swapped) {
+                /* This "Early exit" somehow works but did'nt feel like figuring out */
+                System.out.println("Early exit");
+                break;
+            }
+
         }
 
         System.out.println(Arrays.toString(arr));
@@ -53,10 +62,24 @@ class Sort {
              * This facilitates early exit from code if the array elements are sorted
              * already
              */
-            if (!swapped)
+            if (!swapped) {
+                /* This "Early exit" somehow works but did'nt feel like figuring out */
+                System.out.println("Early exit");
                 break;
+            }
         }
         System.out.println(Arrays.toString(arr));
+    }
+
+    // Merge sort
+    public void mergeSort() {
+        System.out.println("Enter the size of the array : ");
+        int n = sc.nextInt();
+
+        int[] arr = HelperFunction.arrayInput(n);
+
+        int left = (int) (Math.floor((n-1) / 2));
+        System.out.println(left);
     }
 
     // endl
@@ -69,7 +92,8 @@ public class sortingTechniques {
         Sort sort = new Sort();
 
         // sort.selectionSort();
-        sort.bubbleSort();
+        // sort.bubbleSort();
+        sort.mergeSort();
 
     }
 }
