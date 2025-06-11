@@ -68,16 +68,27 @@ class basicMaths {
         pSumOfNum(i + 1, n, sum + i);
     }
 
+    // Factorial of n numbers
+    public void pFactorial(int i, int product) {
+        if (i < 1) {
+            System.out.println("Factorial is : " + product);
+            return;
+        }
+        pFactorial(i - 1, product * i);
+    }
+
+    // endl
+
+    // endl
 }
 
 public class recursion {
     public static void main(String args[]) {
         basicMaths recursion = new basicMaths();
 
-        recursion.pName(1, 5);
-        recursion.pName(1, 5);
-        recursion.pNumber(8, 2);
-        recursion.pSumOfNum(1, 5, 0);
-        recursion.pSumOfNum(1, 5, 0);
+        // recursion.pName(1, 5);
+        // recursion.pNumber(8, 2);
+        // recursion.pSumOfNum(1, 5, 0);
+        recursion.pFactorial(5, 1);
     }
 }

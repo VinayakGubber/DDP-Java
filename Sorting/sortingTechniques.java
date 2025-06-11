@@ -78,10 +78,38 @@ class Sort {
 
         int[] arr = HelperFunction.arrayInput(n);
 
-        int left = (int) (Math.floor((n-1) / 2));
+        int left = (int) (Math.floor((n - 1) / 2));
         System.out.println(left);
     }
 
+    // Insertion sort
+    public void insertionSort() {
+        System.out.println("Enter the size of the array : ");
+        int n = sc.nextInt();
+
+        int[] arr = HelperFunction.arrayInput(n);
+
+        for (int i = 1; i < n; i++) {
+            int key = arr[i];
+            int j = i - 1;
+            boolean swapped = false;
+            while (j >= 0 && arr[j] > key) {
+                arr[j + 1] = arr[j];// this basically shifts the element at j to j+1
+                j--;
+                swapped = true;
+            }
+            arr[j + 1] = key;
+            /*
+             * j+1 because we decrement the value of j even before we check the condition//
+             * come out of the loop so to insert into correct place we use j+1
+             */
+            if (!swapped) {
+                break;
+            }
+        }
+        System.out.println(Arrays.toString(arr));
+
+    }
     // endl
 
     // endl
@@ -93,7 +121,8 @@ public class sortingTechniques {
 
         // sort.selectionSort();
         // sort.bubbleSort();
-        sort.mergeSort();
+        // sort.mergeSort();
+        sort.insertionSort();
 
     }
 }
