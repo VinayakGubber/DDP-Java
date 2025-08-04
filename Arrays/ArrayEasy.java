@@ -2,6 +2,7 @@ package Arrays;
 
 import HelperFunctions.HelperFunction;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 class ArrayProblemsEasy {
@@ -164,9 +165,43 @@ class ArrayProblemsEasy {
         System.out.println();
         String isORare = (index < 2) ? "is" : "are";
         System.out.println("The total unique elements present in the array " + isORare + " : " + (index + 1));
+        // TO perform mathematical operations in SOUT use parenthesis
     }
-    // TO perform mathematical operations in SOUT use parenthesis
 
+    public void leftRotate() {
+        System.out.println("Enter the size of the array : ");
+        int n = sc.nextInt();
+
+        int[] arr = HelperFunction.arrayInput(n);
+
+        int temp = arr[0];
+        for (int i = 1; i < n; i++) {
+            arr[i - 1] = arr[i];
+        }
+        arr[n - 1] = temp;
+        System.out.println(Arrays.toString(arr) + " ");
+        System.out.println((arr.length) - 1);
+    }
+
+    public void rightRotateByK(){
+        
+        System.out.println("Enter the size of the array : ");
+        int n = sc.nextInt();
+
+        System.out.println("Enter by how man places it needs to be rotated : ");
+        int k = sc.nextInt();
+
+        int[] arr = HelperFunction.arrayInput(n);
+        
+        for (int i = 1; i <= k; i++) {
+            int temp = arr[arr.length - 1];
+            for (int j = (arr.length) - 2; j >= 0; j--) {
+                arr[j + 1] = arr[j];
+            }
+            arr[0] = temp;
+        }
+        System.out.println(Arrays.toString(arr));
+    }
     //
 
     //
@@ -181,7 +216,9 @@ public class ArrayEasy {
         // ape.largest();
         // ape.secondLargest();
         // ape.sortedOrNot();
-        ape.removeDuplicate();
+        // ape.removeDuplicate();
+        // ape.leftRotate();
+        ape.rightRotateByK();
 
     }
 }
