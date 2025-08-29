@@ -183,8 +183,8 @@ class ArrayProblemsEasy {
         System.out.println((arr.length) - 1);
     }
 
-    public void rightRotateByK(){
-        
+    public void rightRotateByK() {
+
         System.out.println("Enter the size of the array : ");
         int n = sc.nextInt();
 
@@ -192,7 +192,21 @@ class ArrayProblemsEasy {
         int k = sc.nextInt();
 
         int[] arr = HelperFunction.arrayInput(n);
-        
+
+        k = k % n;
+        /*
+         * 
+         * Optimization:
+         * When k is greater than the size of the array (n), rotating the array k times
+         * is equivalent to rotating it k % n times.
+         * 
+         * For example:
+         * - If n = 3 and k = 6, the array remains unchanged after 6 rotations
+         * (every 3 rotations returns it to the original state).
+         * - Instead of performing redundant full-circle rotations, we can
+         * reduce k to k % n for efficiency.
+         */
+
         for (int i = 1; i <= k; i++) {
             int temp = arr[arr.length - 1];
             for (int j = (arr.length) - 2; j >= 0; j--) {
@@ -202,6 +216,35 @@ class ArrayProblemsEasy {
         }
         System.out.println(Arrays.toString(arr));
     }
+
+    public void findMissingConsecutive() {
+        int arr[] = { 4, 5, 6, 9, 12, 13 };
+        // int arrMissing[] = { 4, 5, 6, 9, 10, 11 };
+
+        int start = arr[0];
+        for (int i = 0; i < arr.length - 1; i++) {
+
+            if (start == arr[i]) { //4==4,5==5,6==6,7==9,8==9,9==9
+                start++;
+            } else {
+                System.out.println(start);
+                i--;
+                start++;
+            }
+
+            // if (arr[i + 1] - arr[i] > 1) {
+            // // 2
+            // int start = arr[i] + 1;
+            // int end = arr[i + 1] - 1;
+            // for (int j = start; j <= end; j++) {
+            // System.out.println(j);
+            // }
+            // }
+
+        }
+
+    }
+
     //
 
     //
@@ -218,7 +261,8 @@ public class ArrayEasy {
         // ape.sortedOrNot();
         // ape.removeDuplicate();
         // ape.leftRotate();
-        ape.rightRotateByK();
-
+        // ape.rightRotateByK();
+        // ape.rightRotateByK();
+        ape.findMissingConsecutive();
     }
 }
