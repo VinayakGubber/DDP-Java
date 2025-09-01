@@ -89,6 +89,6 @@ public class recursion {
         // recursion.pName(1, 5);
         // recursion.pNumber(8, 2);
         // recursion.pSumOfNum(1, 5, 0);
-        recursion.pFactorial(5, 1);
+        // recursion.pFactorial(5, 1);
     }
 }
