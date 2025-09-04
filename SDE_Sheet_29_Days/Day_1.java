@@ -102,6 +102,7 @@ public class Day_1 {
         int n = matrix.length;
         int m = matrix[0].length;
 
+        // For setting true/false
         for (int i = 0; i < n; i++) {
             if (matrix[i][0] == 0) {
                 row = true;
@@ -109,6 +110,7 @@ public class Day_1 {
             }
         }
 
+        // For setting true/false
         for (int j = 0; j < m; j++) {
             if (matrix[0][j] == 0) {
                 col = true;
@@ -116,6 +118,7 @@ public class Day_1 {
             }
         }
 
+        // for traversing form 1,1 to n,m and setting marker to 0
         for (int i = 1; i < n; i++) {
             for (int j = 1; j < matrix[0].length; j++) {
                 if (matrix[i][j] == 0) {
@@ -125,6 +128,7 @@ public class Day_1 {
             }
         }
 
+        // for traversing from 1,1 to n,m and setting the matrix elements to 0
         for (int i = 1; i < n; i++) {
             for (int j = 1; j < matrix[0].length; j++) {
                 if (matrix[i][0] == 0 || matrix[0][j] == 0) {
