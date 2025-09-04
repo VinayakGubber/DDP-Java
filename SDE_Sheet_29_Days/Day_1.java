@@ -1,5 +1,7 @@
 package SDE_Sheet_29_Days;
 
+import java.math.*;
+
 public class Day_1 {
     /* Start of Set Matrix Zero - BRUTE */
 
@@ -151,21 +153,119 @@ public class Day_1 {
     }
 
     /* End of Set Matrix Zero - O P T I M A L */
-    /* Start of Maximum subarray - BRUTE */
-    public void maximumSubarray() {
-        int n = 5;
+    /*
+     * Start of Maximum subarray - BRUTE
+     * we write three nested loops the outermost is to tell the start index each
+     * time
+     * 
+     * and the inner loop is ot iterate from the INDEX I to the last index giving
+     * all possible subarrays
+     * 
+     * the innermost loop is to calculate the sum of the sub arrays and store the
+     * newest MAX sum in variable max
+     * 
+     * Time complexity O(n^3)
+     * 
+     */
+    public void BRUTEmaximumSubarray() {
         int[] arr = { 1, 2, 3, 4, 5 };
+        int n = arr.length;
+        int max = Integer.MIN_VALUE;
         for (int i = 0; i < n; i++) {
-            System.out.println(arr[i] + "");
-            for (int j = i + 1; j < n; j++) {
-                System.out.println(arr[j] + "");
+            for (int j = i; j < n; j++) {
+                int sum = 0;
+                for (int k = i; k <= j; k++) {
+                    sum = sum + arr[k];
+                    System.out.print(arr[k] + "  ");
+                }
+                max = Integer.max(sum, max);
+                System.out.print("   ");
             }
-            System.out.println("-------------");
+            System.out.println("");
         }
+        System.out.println(max);
     }
 
+    /* End of Maximum subarray - B R U T E */
+    /* */
+    /*
+     * Start of Maximum subarray - B E T T E R
+     * we have two arrays one for determining the new start every time
+     * 
+     * the second for loop is to traverse form INDEX I to the last element
+     * also handle the calulating the sum of all the subarrays and then assign the
+     * newest max to the variable max
+     * 
+     * 
+     * Time complexity O(n^2)
+     */
+    public void BETTERMaximumSubArray() {
+        int[] arr = { -2, 1, -3, 4, -1, 2, 1, -5, 4 };
+        int n = arr.length;
+        int max = Integer.MIN_VALUE;
+        for (int i = 0; i < n; i++) {
+            int sum = 0;
+            for (int j = i; j < n; j++) {
+                sum += arr[j];
+                max = Integer.max(max, sum);
+                System.out.print(arr[j] + "  ");
+            }
+            System.out.println();
+        }
+
+        System.out.println(max);
+    }
+
+    /* End of Maximum subarray - B E T T E R */
+    /* */
+    /*
+     * Start of Maximum subarray - O P T I M A L
+     * 
+     * Here we have a single loop that iterates through the array and follows
+     * Kandane's algorithm which says
+     * 
+     * Ill iterate throught the array and add the elements one by one to variable
+     * sum
+     * 
+     * if the sum is greater that 0 AND the max value ; Ill assign the sum to the
+     * max variable
+     * 
+     * if the sum is smaller that 0 it holds no value for me so I re-initialize the
+     * sum to 0
+     */
+    public void OPTIMALMaximumSubarray() {
+        int[] arr = { -2, 1, -3, 4, -1, 2, 1, -5, 4 };
+        int n = arr.length;
+        int max = Integer.MIN_VALUE;
+        int sum = 0;
+        for (int i = 0; i < n; i++) {
+            sum += arr[i];
+
+            /*
+             * && sum > max to ensure the cases like [-2,1,-3,4,-1,2,1,-5,4] dont fail where
+             * after the 6 th index we get the 6 - 5 which will be 1 and plus 4 will be 5
+             * but the maximim sub array sum is 6
+             * 
+             */
+            if (sum > 0 && sum > max) {
+                max = sum;
+            }
+            if (sum < 0) {
+                sum = 0;
+            }
+        }
+        System.out.println(max);
+    }
+
+    /* End of Maximum subarray - O P T I M A L */
+    //
+    //
+    //
+    //
+    //
+    //
     public static void main(String[] args) {
         Day_1 p1 = new Day_1();
-        p1.maximumSubarray();
+        p1.OPTIMALMaximumSubarray();
     }
 }
