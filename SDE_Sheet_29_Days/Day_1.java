@@ -236,9 +236,12 @@ public class Day_1 {
     public void OPTIMALMaximumSubarray() {
         int[] arr = { -2, 1, -3, 4, -1, 2, 1, -5, 4 };
         int n = arr.length;
-        int max = Integer.MIN_VALUE;
-        int sum = 0;
-        for (int i = 0; i < n; i++) {
+        int max = arr[0]; // -2
+        int sum = arr[0]; // -2
+        int start = 0;
+        int end = 0;
+        int tempStart = 0;
+        for (int i = 1; i < n; i++) {
             sum += arr[i];
 
             /*
@@ -247,17 +250,111 @@ public class Day_1 {
              * but the maximim sub array sum is 6
              * 
              */
-            if (sum > 0 && sum > max) {
-                max = sum;
-            }
             if (sum < 0) {
                 sum = 0;
+                tempStart = i + 1;
+            } else if (sum > max) {
+                max = sum;
+                start = tempStart;
+                end = i;
             }
         }
+        for (int i = start; i <= end; i++) {
+            System.out.print(arr[i]
+                    + " ");
+        }
+        System.out.println("");
         System.out.println(max);
+
     }
 
     /* End of Maximum subarray - O P T I M A L */
+    /* Start of sort array of "0,1,2" - B R U T E */
+    /* Use any sorting alogo example a merge sort which will take O(NlogN) */
+    /* End of sort array of "0,1,2" - B R U T E */
+    /*
+     * Start of sort array of "0,1,2" - B E T T E R
+     * 
+     * Time complexity would be O(n + n + n + n) = O(4n) ≈ O(n)
+     */
+    public void BETTERSort012() {
+        int[] arr = { 2, 0, 2, 1, 1, 0, 2, 0, 1, 0, 2, 1, 0 };
+        int n = arr.length;
+        int count0 = 0;
+        int count1 = 0;
+        int count2 = 0;
+        for (int i = 0; i < n; i++) {
+            if (arr[i] == 0) {
+                count0++;
+            } else if (arr[i] == 1) {
+                count1++;
+            } else if (arr[i] == 2) {
+                count2++;
+            }
+        }
+        System.out.println(count0 + " " + count1 + " " + count2 + " ");
+
+        for (int i = 0; i < count0; i++) {
+            arr[i] = 0;
+        }
+        for (int i = count0; i < count0 + count1; i++) {
+            arr[i] = 1;
+        }
+        for (int i = count0 + count1; i < n; i++) {
+            arr[i] = 2;
+        }
+
+        for (int i : arr) {
+            System.out.print(i);
+            System.out.print(" ");
+
+        }
+    }
+
+    /* End of sort array of "0,1,2" - B E T T E R */
+    /* */
+    /*
+     * Start of sort array of "0,1,2" - O P T I M A L
+     * 
+     * Time complexity would be at max O(n) and
+     * Space complexity just a few variables
+     */
+    public void OPTIMALSort012() {
+        int[] arr = { 2, 0, 2, 1, 1, 0, 2, 0, 1, 0, 2, 1, 0 };
+        int n = arr.length;
+        int low = 0;
+        int mid = 0;
+        int high = n - 1;
+        int temp;
+
+        while (mid <= high) {
+            /*
+             * While because we dont know how many iteration would it take
+             * Additonally we check until the mid pointer crosses the high
+             * because the unsorted hypothetical array is from mid to high
+             * so if they cross each other then its sorted
+             */
+            if (arr[mid] == 0) {
+                temp = arr[mid];
+                arr[mid] = arr[low];
+                arr[low] = temp;
+                mid++;
+                low++;
+            } else if (arr[mid] == 1) {
+                mid++;
+            } else if (arr[mid] == 2) {
+                temp = arr[mid];
+                arr[mid] = arr[high];
+                arr[high] = temp;
+                high--;
+            }
+        }
+        for (int i : arr) {
+            System.out.print(i + " ");
+        }
+    }
+
+    /* End of sort array of "0,1,2" - O P T I M A L */
     //
     //
     //
@@ -266,6 +363,6 @@ public class Day_1 {
     //
     public static void main(String[] args) {
         Day_1 p1 = new Day_1();
-        p1.OPTIMALMaximumSubarray();
+        p1.OPTIMALSort012();
     }
 }
