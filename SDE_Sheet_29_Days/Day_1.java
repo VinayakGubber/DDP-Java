@@ -4,8 +4,9 @@ import java.math.*;
 import java.util.Arrays;
 
 public class Day_1 {
-    /* Start of Set Matrix Zero - BRUTE */
 
+    // -----------------------------------------------------------------------------------------------------------//
+    /* Start of Set Matrix Zero - BRUTE */
     /* B R U T E */
     /*
      * Fails in case of matrix containing negative numbers
@@ -53,7 +54,9 @@ public class Day_1 {
     }
 
     /* End of Set Matrix Zero - B R U T E */
+    // -----------------------------------------------------------------------------------------------------------//
 
+    // -----------------------------------------------------------------------------------------------------------//
     /* B E T T E R */
     /*
      * Use extra array to mark rows and columns that need to be changed
@@ -88,6 +91,9 @@ public class Day_1 {
 
     /* End of Set Matrix Zero - B E T T E R */
 
+    // -----------------------------------------------------------------------------------------------------------//
+
+    // -----------------------------------------------------------------------------------------------------------//
     /* O P T I M A L */
     /*
      * In this we use the existing matrix's row 1 and column as marker arrays
@@ -154,6 +160,11 @@ public class Day_1 {
     }
 
     /* End of Set Matrix Zero - O P T I M A L */
+
+    // -----------------------------------------------------------------------------------------------------------//
+
+    // -----------------------------------------------------------------------------------------------------------//
+
     /*
      * Start of Maximum subarray - BRUTE
      * we write three nested loops the outermost is to tell the start index each
@@ -188,7 +199,10 @@ public class Day_1 {
     }
 
     /* End of Maximum subarray - B R U T E */
-    /* */
+
+    // -----------------------------------------------------------------------------------------------------------//
+
+    // -----------------------------------------------------------------------------------------------------------//
     /*
      * Start of Maximum subarray - B E T T E R
      * we have two arrays one for determining the new start every time
@@ -218,7 +232,8 @@ public class Day_1 {
     }
 
     /* End of Maximum subarray - B E T T E R */
-    /* */
+
+    // -----------------------------------------------------------------------------------------------------------//
     /*
      * Start of Maximum subarray - O P T I M A L
      * 
@@ -270,6 +285,9 @@ public class Day_1 {
     }
 
     /* End of Maximum subarray - O P T I M A L */
+
+    // -----------------------------------------------------------------------------------------------------------//
+    // -----------------------------------------------------------------------------------------------------------//
     /* Start of sort array of "0,1,2" - B R U T E */
     /* Use any sorting alogo example a merge sort which will take O(NlogN) */
     /* End of sort array of "0,1,2" - B R U T E */
@@ -313,7 +331,10 @@ public class Day_1 {
     }
 
     /* End of sort array of "0,1,2" - B E T T E R */
-    /* */
+
+    // -----------------------------------------------------------------------------------------------------------//
+
+    // -----------------------------------------------------------------------------------------------------------//
     /*
      * Start of sort array of "0,1,2" - O P T I M A L
      * 
@@ -356,9 +377,10 @@ public class Day_1 {
             System.out.print(i + " ");
         }
     }
-
     /* End of sort array of "0,1,2" - O P T I M A L */
-    /* */
+    // -----------------------------------------------------------------------------------------------------------//
+
+    // -----------------------------------------------------------------------------------------------------------//
     /*
      * Start of next permutation" - B R U T E
      * We simply get all the permutations of the given numbers in ascending order
@@ -366,7 +388,9 @@ public class Day_1 {
      */
 
     /* End of next permutation" - B R U T E */
+    // -----------------------------------------------------------------------------------------------------------//
     /* */
+    // -----------------------------------------------------------------------------------------------------------//
     /* Start of next permutation" - B E T T E R */
     public int[] BETTERNextPermutation() {
         int[] arr = { 1, 2, 3, 6, 5, 4 };
@@ -416,6 +440,8 @@ public class Day_1 {
     }
 
     /* End of next permutation" - B E T T E R */
+
+    // -----------------------------------------------------------------------------------------------------------//
 
     //
     //
