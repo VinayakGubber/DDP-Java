@@ -1,6 +1,7 @@
 package SDE_Sheet_29_Days;
 
 import java.math.*;
+import java.util.Arrays;
 
 public class Day_1 {
     /* Start of Set Matrix Zero - BRUTE */
@@ -316,6 +317,8 @@ public class Day_1 {
     /*
      * Start of sort array of "0,1,2" - O P T I M A L
      * 
+     * D U T C H - N A T I O N A L - Flag Algorithm
+     * 
      * Time complexity would be at max O(n) and
      * Space complexity just a few variables
      */
@@ -355,6 +358,65 @@ public class Day_1 {
     }
 
     /* End of sort array of "0,1,2" - O P T I M A L */
+    /* */
+    /*
+     * Start of next permutation" - B R U T E
+     * We simply get all the permutations of the given numbers in ascending order
+     * and then find the next
+     */
+
+    /* End of next permutation" - B R U T E */
+    /* */
+    /* Start of next permutation" - B E T T E R */
+    public int[] BETTERNextPermutation() {
+        int[] arr = { 1, 2, 3, 6, 5, 4 };
+        int n = arr.length - 1;
+        int index = -1;
+
+        // Finding the dip in graph
+        for (int i = n - 2; i >= 0; i--) {
+            if (arr[i] < arr[i + 1]) {
+                index = i;
+                break;
+            }
+        }
+
+        if (index == -1) {
+            Reverse(arr, 0, n); // reverse entire array
+            return arr;
+        }
+
+        // Swap logic
+        if (index >= 0) {
+            for (int i = n; i > index; i--) {
+                if (arr[i] > arr[index]) {
+                    int temp = arr[index];
+                    arr[index] = arr[i];
+                    arr[i] = temp;
+                    break; // stop after first valid swap
+                }
+            }
+        }
+
+        return Reverse(arr, index + 1, n);
+        // Reverse the postfix part of array
+        //
+    }
+
+    public int[] Reverse(int[] arr, int start, int end) {
+
+        while (start < end) {
+            int temp = arr[start];
+            arr[start] = arr[end];
+            arr[end] = temp;
+            start++;
+            end--;
+        }
+        return arr;
+    }
+
+    /* End of next permutation" - B E T T E R */
+
     //
     //
     //
@@ -362,7 +424,21 @@ public class Day_1 {
     //
     //
     public static void main(String[] args) {
+        // int[] arr = { 1, 2, 3, 4, 5 };
+        // int n = arr.length - 1;
         Day_1 p1 = new Day_1();
-        p1.OPTIMALSort012();
+
+        for (int i : p1.BETTERNextPermutation()) {
+            System.out.print(i);
+            System.out.print(" ");
+        }
+
+        // int[] arr = p1.BETTERNextPermutation();
+        // for (int i : arr) {
+        // System.out.print(i);
+        // System.out.print(" ");
+        // }
+
+        // p1.Reverse(arr)
     }
 }
